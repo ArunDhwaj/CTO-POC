@@ -54,7 +54,7 @@ public class StreamDriver {
     private static void filterGroupingByTransformCollect(List<Product> products){
         approach3(products);
         approach4(products);
-        approach5(products);
+        secondHighestFromEachGroup(products);
     }
 
     private static void approach1(List<Product> products){
@@ -108,9 +108,12 @@ public class StreamDriver {
         Log.info("4. Approach4: slimedMap: value in reversed: "+ slimedMap);
     }
 
-    private static void approach5(List<Product> products){
+    /*
+    find the second highest from each group
+     */
+    private static void secondHighestFromEachGroup(List<Product> products){
 
-        Map<Integer, Optional<Product>> slimedMap = products.stream()
+        Map<Integer, Optional<Product>> secondHighestFrom = products.stream()
                 .filter(p -> p.getPrice() > 40000.00f)
                 .collect(groupingBy(
                         Product::getId,
@@ -120,6 +123,6 @@ public class StreamDriver {
 
                 )));
 
-        Log.info("5. Approach5: slimedMap: value in reversed: get 2nd element"+ slimedMap);
+        Log.info("5. secondHighestFromEachGroup: secondHighestFrom: value in reversed: get 2nd highest element from each group"+ secondHighestFrom);
     }
 }
