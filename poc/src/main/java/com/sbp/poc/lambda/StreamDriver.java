@@ -3,15 +3,12 @@ package com.sbp.poc.lambda;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.*;
-
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 public class StreamDriver {
     private static Logger Log = LoggerFactory.getLogger(StreamDriver.class);
 
@@ -57,6 +54,7 @@ public class StreamDriver {
     private static void filterGroupingByTransformCollect(List<Product> products){
         approach3(products);
         approach4(products);
+        approach5(products);
     }
 
     private static void approach1(List<Product> products){
@@ -101,9 +99,27 @@ public class StreamDriver {
                     .map(Product::getPrice)
                     .collect(toList());
 
+                    Log.info("4 priceList: "+ priceList);
+
+                    Collections.sort(priceList, Collections.reverseOrder());
                     return priceList;
                 })));
 
-        Log.info("4. Approach4: slimedMap: "+ slimedMap);
+        Log.info("4. Approach4: slimedMap: value in reversed: "+ slimedMap);
+    }
+
+    private static void approach5(List<Product> products){
+
+        Map<Integer, Optional<Product>> slimedMap = products.stream()
+                .filter(p -> p.getPrice() > 40000.00f)
+                .collect(groupingBy(
+                        Product::getId,
+                        collectingAndThen(toList(),
+                                list -> list.stream()
+                                                .sorted(Comparator.comparing(Product::getPrice).reversed()).skip(1).findFirst()
+
+                )));
+
+        Log.info("5. Approach5: slimedMap: value in reversed: get 2nd element"+ slimedMap);
     }
 }
