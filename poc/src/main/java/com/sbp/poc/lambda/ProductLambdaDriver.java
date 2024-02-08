@@ -9,11 +9,11 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
-public class StreamDriver {
-    private static Logger Log = LoggerFactory.getLogger(StreamDriver.class);
+public class ProductLambdaDriver {
+    private static Logger Log = LoggerFactory.getLogger(ProductLambdaDriver.class);
 
     public static void main(String[] args) {
-        Log.info("Poc: StreamDriver");
+        Log.info("Poc: ProductLambdaDriver");
 
         List<Product> products = createProducts();
 
