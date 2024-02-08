@@ -1,19 +1,17 @@
-package com.sbp.poc.lambda;
+package com.sbp.poc.stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 
-public class EmployeeLambdaDriver {
-    private static Logger Log = LoggerFactory.getLogger(EmployeeLambdaDriver.class);
+public class EmployeeStreamDriver {
+    private static Logger Log = LoggerFactory.getLogger(EmployeeStreamDriver.class);
 
     public static void main(String[] args) {
-        Log.info("Poc: EmployeeLambdaDriver");
+        Log.info("Poc: EmployeeStreamDriver");
 
         //Create List of Employee
         List<Employee> employees = createEmployees();

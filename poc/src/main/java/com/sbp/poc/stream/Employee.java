@@ -1,4 +1,4 @@
-package com.sbp.poc.lambda;
+package com.sbp.poc.stream;
 
 import lombok.Data;
 @Data

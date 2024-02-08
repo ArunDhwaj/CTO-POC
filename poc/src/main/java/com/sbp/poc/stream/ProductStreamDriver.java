@@ -1,4 +1,4 @@
-package com.sbp.poc.lambda;
+package com.sbp.poc.stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,11 +9,11 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
-public class ProductLambdaDriver {
-    private static Logger Log = LoggerFactory.getLogger(ProductLambdaDriver.class);
+public class ProductStreamDriver {
+    private static Logger Log = LoggerFactory.getLogger(ProductStreamDriver.class);
 
     public static void main(String[] args) {
-        Log.info("Poc: ProductLambdaDriver");
+        Log.info("Poc: ProductStreamDriver");
 
         List<Product> products = createProducts();
 
